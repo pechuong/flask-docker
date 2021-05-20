@@ -23,4 +23,4 @@ def character_response_code(character_response):
 
 @then('the response shows status of "<status>"')
 def character_alive(character_response, status):
-    assert character_response.json()['status'] == status
+    assert character_response.json()['results'][0]['status'] == status
