@@ -1,26 +1,26 @@
 import pytest
 import requests
 
-from pytest_bdd import scenarios, given, when, then
+from pytest_bdd import scenarios, when, then
 
-CHARACTER_API = 'https://rickandmortyapi.com/api/character/'
+CHARACTER_API = 'https://rickandmortyapi.com/api/character/?name='
 
-scenarios('../features/dnd_classes.feature', example_converters=dict(classes=str, hit=int))
+scenarios('../features/ram_alive.feature', example_converters=dict(character=str, status=str))
 
 
 @pytest.fixture
-@when('the DnD API is queried with "<classes>"')
-def classes_response(classes):
+@when('the RAM API is queried with "<Character>"')
+def character_response(character):
     params = {'format': 'json'}
-    response = requests.get(CLASSES_API + classes, params=params)
+    response = requests.get(CHARACTER_API + character, params=params)
     return response
 
 
 @then('the response status code is 200')
-def classes_response_code(classes_response):
-    assert classes_response.status_code == 200
+def character_response_code(character_response):
+    assert character_response.status_code == 200
 
 
-@then('the response shows hit_die of "<hit>"')
-def classes_hit_die(classes_response, hit):
-    assert classes_response.json()['hit_die'] == hit
+@then('the response shows status of "<Status>"')
+def character_alive(character_response, status):
+    assert character_response.json()['status'] == status
