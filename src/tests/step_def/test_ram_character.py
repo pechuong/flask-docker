@@ -9,7 +9,7 @@ scenarios('../features/ram_alive.feature', example_converters=dict(character=str
 
 
 @pytest.fixture
-@when('the RAM API is queried with "<Character>"')
+@when('the RAM API is queried with "<character>"')
 def character_response(character):
     params = {'format': 'json'}
     response = requests.get(CHARACTER_API + character, params=params)
@@ -21,6 +21,6 @@ def character_response_code(character_response):
     assert character_response.status_code == 200
 
 
-@then('the response shows status of "<Status>"')
+@then('the response shows status of "<status>"')
 def character_alive(character_response, status):
     assert character_response.json()['status'] == status
