@@ -4,9 +4,9 @@ Feature: RAM alive
   So that I can predict who might die next
 
   Scenario Outline: RAM char-alive
-    When the RAM API is queried with "<Character>"
+    When the RAM API is queried with "<character>"
     Then the response status code is 200
-    And the response shows status of "<Status>"
+    And the response shows status of "<status>"
 
     Examples: char-alive
       | character                 | status     |
