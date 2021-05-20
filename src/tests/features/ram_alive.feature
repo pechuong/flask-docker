@@ -10,5 +10,5 @@ Feature: RAM alive
 
     Examples: char-alive
       | character                 | status     |
-      | Rick Sanchez (C-137)      | "Alive"    |
+      | Rick Sanchez              | "Alive"    |
       | Morty Smith               | "Alive"    |
